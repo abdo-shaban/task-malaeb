@@ -14,6 +14,6 @@ class Stadium extends Model
 
     public function pitches(): HasMany
     {
-        $this->hasMany(StadiumPitch::class, 'stadium_id', 'id');
+        return $this->hasMany(StadiumPitch::class, 'stadium_id', 'id');
     }
 }

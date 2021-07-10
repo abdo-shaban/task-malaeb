@@ -12,6 +12,6 @@ class StadiumPitch extends Model
 
     public function stadium(): BelongsTo
     {
-        $this->belongsTo(Stadium::class, 'stadium_id', 'id');
+        return $this->belongsTo(Stadium::class, 'stadium_id', 'id');
     }
 }
