@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Stadium;
-use App\Models\StadiumPitch;
 use Illuminate\Database\Seeder;
 
 class StadiumSeeder extends Seeder
@@ -17,9 +16,7 @@ class StadiumSeeder extends Seeder
     {
         Stadium::factory()
             ->count(2)
-            ->create()
-            ->each(function (Stadium $stadium) {
-                StadiumPitch::factory()->count(3)->create(['stadium_id' => $stadium]);
-            });
+            ->hasPitches(3)
+            ->create();
     }
 }
