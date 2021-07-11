@@ -24,7 +24,7 @@ class BookingSlotRequest extends FormRequest
     public function rules()
     {
         return [
-            'stadium_pitch_id' => ['required', 'integer', 'min:1', 'exits:stadium_pitches'],
+            'stadium_pitch_id' => ['required', 'integer', 'min:1', 'exists:stadium_pitches,id'],
             'start_at'         => ['required', 'date', 'after_or_equal:today'],
             'type'             => ['required', 'in:60,90'],
         ];
