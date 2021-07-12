@@ -8,7 +8,10 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class BookingSlotDTO extends DataTransferObject
 {
-    public int $stadium_pitch_id;
+    /**
+     * @var int|string $stadium_pitch_id
+     */
+    public $stadium_pitch_id;
     public string $start_at;
     public string $type;
 }
