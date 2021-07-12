@@ -24,7 +24,9 @@ class GetAvailableSlotRequest extends FormRequest
     public function rules()
     {
         return [
-            'day' => ['required', 'date', 'after_or_equal:today']
+            'day'              => ['required', 'date', 'after_or_equal:today'],
+            'type'             => ['required', 'in:60,90'],
+            'stadium_pitch_id' => ['required', 'integer', 'min:1', 'exists:stadium_pitches,id'],
         ];
     }
 }

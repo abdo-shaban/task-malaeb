@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\DTOs\BookingSlotDTO;
 use App\Models\Slot;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 
 class BookingSlotsService
@@ -37,5 +38,14 @@ class BookingSlotsService
                 ->where('start_at', '<', $end_at)
                 ->where('end_at', '>', $bookingSlotDTO->start_at)
                 ->count() === 0;
+    }
+
+    public function getAllBookedSlotsOnDay(string $day, int $stadium_pitch_id): Collection
+    {
+        return $this->slot->newQuery()
+            ->where('stadium_pitch_id', $stadium_pitch_id)
+            ->whereDate('start_at', $day)
+            ->orderBy('start_at')
+            ->get();
     }
 }
