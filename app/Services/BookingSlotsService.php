@@ -28,4 +28,14 @@ class BookingSlotsService
 
         return $this->slot;
     }
+
+    public function isAvailableSlot(BookingSlotDTO $bookingSlotDTO): bool
+    {
+        $end_at = Carbon::make($bookingSlotDTO->start_at)->addMinutes($bookingSlotDTO->type);
+        return $this->slot->newQuery()
+                ->where('stadium_pitch_id', $bookingSlotDTO->stadium_pitch_id)
+                ->where('start_at', '<', $end_at)
+                ->where('end_at', '>', $bookingSlotDTO->start_at)
+                ->count() === 0;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\SlotController;
+use App\Http\Controllers\AvailableSlotController;
+use App\Http\Controllers\BookSlotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('slots')->group(function () {
-    Route::get('available', [SlotController::class, 'available']);
-    Route::post('/', [SlotController::class, 'store']);
+    Route::get('available', AvailableSlotController::class);
+    Route::post('/', BookSlotController::class);
 });
